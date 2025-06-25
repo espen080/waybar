@@ -100,7 +100,7 @@ window#waybar {
 
 
 /* Custom Stuff */
-#custom-audio {
+#pulseaudio {
     background: transparent;
     color: #ffffff;
     opacity: 0.7;

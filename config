@@ -27,7 +27,7 @@
     // Choose the order of the modules
     "modules-center": ["sway/workspaces", "tray"],
     "modules-left": ["custom/hostname"],
-    "modules-right": [ "custom/audio","network","battery","clock"],
+    "modules-right": [ "pulseaudio","network","battery","clock"],
 
     // Configuration for individual modules
      "sway/workspaces": {
@@ -42,7 +42,7 @@
     },
 
     "clock": {
-        "timezone": "America/Detroit",
+        "timezone": "Europe/Oslo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}",
     },
@@ -72,15 +72,22 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click-right": "bash ~/.config/rofi/wifi_menu/rofi_wifi_menu",
     },
-
-    "custom/audio": {
-        "format": "{}",
-        "signal": 8,
-        "interval": "once",
-        "exec": "~/.config/sway/audio.sh",
-        "on-click": "pavucontrol",
-    },
-
+   "pulseaudio": {
+	"format": "{volume}% {icon}",
+	"format-bluetooth": "{volume}% {icon} bt",
+	"format-muted": "",
+	"format-icons": {
+	     "headphones": "",
+	     "handsfree": "",
+	     "headset": "",
+	     "phone": "",
+	     "portable": "",
+	     "car": "",
+	     "default": ["", ""]
+	},
+	"scroll-step": 1,
+	"on-click": "pavucontrol"
+   },
     "custom/hostname": {
         "format": "🖳  {}",
         "exec": "/usr/bin/hostname -f",
