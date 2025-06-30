@@ -29,7 +29,7 @@
 }
 
 #clock {
-    background: #1f1f1f;
+    background: transparent;
     color: #ffffff;
     margin-right: 4px;
     padding: 2px 8px;
@@ -48,7 +48,7 @@
 }
 
 #tray {
-    background: #1f1f1f;
+    background: transparent;
     color: #ffffff;
     margin-left: 18px;
 }
