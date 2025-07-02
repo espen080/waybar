@@ -25,9 +25,9 @@
     "margin-bottom": 0,
 
     // Choose the order of the modules
-    "modules-center": ["sway/workspaces"],
-    "modules-left": ["custom/hostname"],
-    "modules-right": [ "pulseaudio","tray","network","battery","clock"],
+    "modules-center": ["clock"],
+    "modules-left": ["sway/workspaces"],
+    "modules-right": [ "pulseaudio","tray","network","battery"],
 
     // Configuration for individual modules
      "sway/workspaces": {
@@ -44,7 +44,7 @@
     "clock": {
         "timezone": "Europe/Oslo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}",
+	"format": "{:%H:%M %d.%m.%y}"
     },
 
     "battery": {
@@ -86,7 +86,10 @@
 	     "default": ["", ""]
 	},
 	"scroll-step": 1,
-	"on-click": "pavucontrol"
+	"on-click-right": "pavucontrol",
+	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+	"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
    },
     "custom/hostname": {
         "format": "🖳  {}",
