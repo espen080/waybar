@@ -44,7 +44,7 @@
     "clock": {
         "timezone": "Europe/Oslo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-	"format": "{:%H:%M %d.%m.%y}"
+	"format": "{:%H:%M - %a %d}"
     },
 
     "battery": {
