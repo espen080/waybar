@@ -91,7 +91,7 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    background: #453e3d;
+    background: #41979c;
     color: #ffffff;
     opacity: 0.8;
 }
