@@ -1,100 +1,132 @@
-
-//====================================================================================================//
-// Waybar Configuration File                                                                          //
-//----------------------------------------------------------------------------------------------------//
-// Purpose: Creates a minimalistic (yet functional) waybar at                                         //
-// the top of the screen.                                                                             //
-// themes and colors, set the wallpaper, and more.                                                    //
-//                                                                                                    //
-// License: Creative Commons Attribution 4.0 International                                            //
-//                                                                                                    //
-// Credit:                                                                                            //
-// Battery section adapted from:                                                                      //
-// https://github.com/Egosummiki/dotfiles/blob/master/waybar/config                                   //
-//                                                                                                    //
-// Pipewire audio adapted from:                                                                       //
-// https://www.reddit.com/r/swaywm/comments/sks343/pwvolume_pipewire_volume_control_and_waybar_module //
-//====================================================================================================//
-
 {
-    "layer": "top",
-    "position": "top",
-    "height": 36,
-    "spacing": 4,
-    "margin-top": 0,
-    "margin-bottom": 0,
-
-    // Choose the order of the modules
-    "modules-center": ["clock"],
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "height": 26,
     "modules-left": ["sway/workspaces"],
-    "modules-right": [ "pulseaudio","tray","network","battery"],
+    "modules-center": ["clock"],
+  "modules-right": [
+    "group/tray-expander",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "cpu",
+    "battery"
+  ],
 
     // Configuration for individual modules
      "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": false,
-         "format": "{name}",
+         "on-click": "activate",
+         "format": "{icon}",
+         "format-icons": {
+          "default": "",
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "4",
+          "5": "5",
+          "6": "6",
+          "7": "7",
+          "8": "8",
+          "9": "9",
+          "10": "0",
+          "focused": "󱓻"
+        },
+        "persistent-workspaces": {
+          "1": [],
+          "2": [],
+          "3": [],
+          "4": [],
+          "5": []
+        }
     },
-
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10,
-    },
-
     "clock": {
         "timezone": "Europe/Oslo",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-	"format": "{:%H:%M - %a %d}"
+        "format": "{:%A %H:%M}",
+        "format-alt": "{:%d %B W%V %Y}",
+        "tooltip": false,
     },
+      "cpu": {
+        "interval": 5,
+        "format": "󰍛",
+      },
 
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15,
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": "⚡{capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""],
+    "tray": {
+        "icon-size": 12,
+        "spacing": 17,
     },
-
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "Sig: {signalStrength}%",
-        "format-ethernet": "Connected  ",
-        "tooltip-format": "{ifname}: {gwaddr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click-right": "nm-applet",
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "nm-connection-editor",
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-discharging": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-   "pulseaudio": {
-	"format": "{volume}% {icon}",
-	"format-bluetooth": "{volume}% {icon} bt",
-	"format-muted": "",
-	"format-icons": {
-	     "headphones": "",
-	     "handsfree": "",
-	     "headset": "",
-	     "phone": "",
-	     "portable": "",
-	     "car": "",
-	     "default": ["", ""]
-	},
-	"scroll-step": 1,
-	"on-click-right": "pavucontrol",
-	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-	"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-	"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
-   },
-    "custom/hostname": {
-        "format": "🖳  {}",
-        "exec": "/usr/bin/hostname -f",
-        "interval": "once",
-        "on-click": "/usr/bin/rxvt -e /usr/bin/htop",
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "on-click": "wlogout --buttons-per-row=4 -p layer-shell",
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "format": "",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "blueman-manager"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "on-click-right": "pavucontrol",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 1,
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", ""]
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
     },
+    "modules": ["custom/expand-icon", "tray"]
+  },
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false,
+    "on-scroll-up": "",
+    "on-scroll-down": "",
+    "on-scroll-left": "",
+    "on-scroll-right": ""
+  },
 }

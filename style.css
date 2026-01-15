@@ -1,117 +1,91 @@
 * {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    min-height: 0;
-    padding-bottom: 2px;
-    padding-top: 2px;
+  background-color: @background;
+  color: @foreground;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 12px;
 }
 
-#battery {
-    background: transparent;
-    color: #ffffff;
-    opacity: 0.7;
-    padding: 2px 8px;
+.modules-left {
+  margin-left: 8px;
 }
 
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    padding: 2px 8px;
-}
-
-#battery.critical:not(.charging) {
-    animation-direction: alternate;
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;
-    animation-name: blink;
-    animation-timing-function: linear;
-    background-color: #f53c3c;
-    color: gray;
-}
-
-#clock {
-    background: transparent;
-    color: #ffffff;
-    margin-right: 4px;
-    padding: 2px 8px;
-    font-size: 16px;
-    opacity: 0.7;
-}
-
-#network {
-    background: transparent;
-    color: #ffffff;
-    opacity: 0.7;
-    padding: 2px 8px;
-}
-
-#network.disconnected {
-    background: #1f1f1f;
-    color: red;
-}
-
-#tray {
-    background: transparent;
-    color: #ffffff;
-    margin-left: 18px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-    background: #1f1f1f;
-    color: #ffffff;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background: #1f1f1f;
-    color: #ffffff;
-}
-
-window#waybar {
-    background: transparent;
-    transition-duration: .2s;
-    transition-property: background-color;
-}
-
-#workspaces button:hover {
-    /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-    background: @background;
-    border-bottom: 1px solid #ffffff;
-    box-shadow: inherit;
-    color: #ffffff;
+.modules-right {
+  margin-right: 8px;
 }
 
 #workspaces button {
-    background: transparent;
-    color: #e0def4;
-    margin-left: 2px;
-    margin-right: 2px;
-    opacity: 0.7;
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
 }
 
-#workspaces button.focused {
-    background: #31748f;
-    color: #e0def4;
-    opacity: 1;
+#workspaces button.empty {
+  opacity: 0.5;
 }
 
-#workspaces button.urgent {
-    background-color: #eb6f92;
+#cpu,
+#battery,
+#pulseaudio,
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-update {
+  min-width: 12px;
+  margin: 0 7.5px;
 }
 
-
-/* Custom Stuff */
-#pulseaudio {
-    background: transparent;
-    color: #ffffff;
-    opacity: 0.7;
-    padding: 2px 8px;
+#tray {
+  margin-right: 16px;
 }
 
-#custom-hostname {
-    background: transparent;
-    color: #ffffff;
-    padding: 2px 8px;
-    opacity: 0.7;
+#bluetooth {
+  margin-right: 17px;
+}
+
+#network {
+  margin-right: 13px;
+}
+
+#custom-expand-icon {
+  margin-right: 18px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+  min-width: 12px;
+  margin-left: 5px;
+  font-size: 10px;
+  padding-bottom: 1px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+
+#custom-voxtype {
+  min-width: 12px;
+  margin: 0 0 0 7.5px;
+}
+
+#custom-voxtype.recording {
+  color: #a55555;
 }
