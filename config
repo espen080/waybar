@@ -22,7 +22,7 @@
          "on-click": "activate",
          "format": "{icon}",
          "format-icons": {
-          "default": "",
+          "focused": "",
           "1": "1",
           "2": "2",
           "3": "3",
@@ -33,7 +33,7 @@
           "8": "8",
           "9": "9",
           "10": "0",
-          "focused": "󱓻"
+          "default": "󱓻"
         },
         "persistent-workspaces": {
           "1": [],
