@@ -12,6 +12,7 @@
     "network",
     "pulseaudio",
     "cpu",
+    "temperature",
     "battery"
   ],
 
@@ -49,6 +50,7 @@
         "format-alt": "{:%d %B W%V %Y}",
         "tooltip": false,
     },
+  "temperature": {},
       "cpu": {
         "interval": 5,
         "format": "󰍛",
