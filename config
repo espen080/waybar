@@ -16,50 +16,52 @@
     "battery"
   ],
 
-    // Configuration for individual modules
-     "sway/workspaces": {
-         "disable-scroll": true,
-         "all-outputs": false,
-         "on-click": "activate",
-         "format": "{icon}",
-         "format-icons": {
-          "focused": "",
-          "1": "1",
-          "2": "2",
-          "3": "3",
-          "4": "4",
-          "5": "5",
-          "6": "6",
-          "7": "7",
-          "8": "8",
-          "9": "9",
-          "10": "0",
-          "default": "󱓻"
-        },
-        "persistent-workspaces": {
-          "1": [],
-          "2": [],
-          "3": [],
-          "4": [],
-          "5": []
-        }
-    },
-    "clock": {
-        "timezone": "Europe/Oslo",
-        "format": "{:%A %H:%M}",
-        "format-alt": "{:%d %B W%V %Y}",
-        "tooltip": false,
-    },
-  "temperature": {},
-      "cpu": {
-        "interval": 5,
-        "format": "󰍛",
+  // Configuration for individual modules
+  "sway/workspaces": {
+       "disable-scroll": true,
+       "all-outputs": false,
+       "on-click": "activate",
+       "format": "{icon}",
+       "format-icons": {
+        "focused": "",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "0",
+        "default": "󱓻"
       },
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      }
+  },
+  "clock": {
+      "timezone": "Europe/Oslo",
+      "format": "{:%A %H:%M}",
+      "format-alt": "{:%d %B W%V %Y}",
+      "tooltip": false,
+  },
+  "temperature": {
+      "thermal-zone": 8,
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+  },
 
-    "tray": {
-        "icon-size": 12,
-        "spacing": 17,
-    },
+  "tray": {
+      "icon-size": 12,
+      "spacing": 17,
+  },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
@@ -103,7 +105,7 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click-right": "pavucontrol",
+    "on-click-right": "ghostty -e bash -l -c 'wiremix'",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
